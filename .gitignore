@@ -1,0 +1,31 @@
+# Clinic Backend (Django REST Framework)
+
+# Dependencies & Environments
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Media & Static
+clinic_backend/media/
+clinic_backend/staticfiles/
+media/
+staticfiles/
+
+# Logs & Debugging
+*.log
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

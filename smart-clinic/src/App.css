@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+    themes: light --default;
+}
+
+/* ==========================================================================
+   SMART CLINIC DESIGN SYSTEM FOUNDATION (UI-1)
+   Standardized brand color tokens and typography base rules.
+   Zero breaking overrides — all print isolation and legacy rules preserved.
+   ========================================================================== */
+@theme {
+  --color-brand-primary: #283891;
+  --color-brand-primary-hover: #1f2c7a;
+}
+
+:root, [data-theme=light] {
+  --color-primary: #283891;
+  --color-primary-content: #ffffff;
+}
+
+/* Fix: daisyUI 5 anchor-positioning can flip dropdowns upward near viewport edge.
+   Force all navbar dropdowns to always open downward. */
+.navbar .dropdown .dropdown-content {
+  top: 100% !important;
+  bottom: auto !important;
+  position: absolute !important;
+}
+
+/* ==========================================================================
+   PRINT MEDIA ISOLATION STYLES (DEF-02)
+   Prevents modal dark backdrops, navbars, and dashboard DOM from bleeding
+   into thermal slips or A4 prescriptions when window.print() is invoked.
+   ========================================================================== */
+@media print {
+  /* 1. Global Reset */
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 2. Hide Non-Print Application Elements */
+  header, nav, footer, aside, .navbar, .no-print, [data-no-print], .print\:hidden,
+  button:not(.allow-print), .btn:not(.allow-print) {
+    display: none !important;
+  }
+
+  /* 3. Modal Shell Reset */
+  .print-modal-overlay {
+    position: static !important;
+    inset: auto !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+  }
+
+  .print-modal-content {
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Hide header/controls inside the modal during print */
+  .print-modal-content > *:not(.print-document) {
+    display: none !important;
+  }
+
+  /* 4. Active Document Isolation */
+  body.print-document-active > *:not(.print-modal-overlay):not(.print-document) {
+    display: none !important;
+  }
+
+  /* 5. Document Specific Formats */
+  .thermal-token-slip {
+    display: block !important;
+    width: 76mm !important;
+    max-width: 76mm !important;
+    margin: 0 auto !important;
+    padding: 6mm 4mm !important;
+    border: 1px dashed #333333 !important;
+    border-radius: 4px !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .a4-prescription-sheet {
+    display: block !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    padding: 8mm 12mm !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+}
+

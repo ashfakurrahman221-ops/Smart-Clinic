@@ -1,0 +1,66 @@
+services:
+  # PostgreSQL Relational Database
+  db:
+    image: postgres:16-alpine
+    container_name: smartclinic_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: smartclinic
+      POSTGRES_USER: clinic_user
+      POSTGRES_PASSWORD: clinic_secure_pass_2026
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clinic_user -d smartclinic"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Django REST Framework Backend
+  backend:
+    build:
+      context: ./clinic_backend
+      dockerfile: Dockerfile
+    container_name: smartclinic_backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DEBUG: "True"
+      SECRET_KEY: "smartclinic-prod-secret-key-change-in-production-deploy"
+      DB_ENGINE: "django.db.backends.postgresql"
+      DB_NAME: "smartclinic"
+      DB_USER: "clinic_user"
+      DB_PASSWORD: "clinic_secure_pass_2026"
+      DB_HOST: "db"
+      DB_PORT: "5432"
+      ALLOWED_HOSTS: "localhost,127.0.0.1,backend,frontend"
+      CORS_ALLOW_ALL_ORIGINS: "True"
+      FRONTEND_URL: "http://localhost:5173"
+      SSLCOMMERZ_IS_SANDBOX: "True"
+      SMS_GATEWAY_PROVIDER: "SIMULATED"
+    ports:
+      - "8000:8000"
+    volumes:
+      - media_volume:/app/media
+      - static_volume:/app/staticfiles
+
+  # React 19 + Vite + DaisyUI Frontend (Served via Nginx Alpine)
+  frontend:
+    build:
+      context: ./smart-clinic
+      dockerfile: Dockerfile
+    container_name: smartclinic_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  postgres_data:
+  media_volume:
+  static_volume:
