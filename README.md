@@ -185,8 +185,8 @@ stateDiagram-v2
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Ishtiak-Ahmed886/Final_Year_Project_version1.git
-cd Final_Year_Project_version1
+git clone https://github.com/ashfakurrahman221-ops/Smart-Clinic.git
+cd Smart-Clinic
 ```
 
 ---
