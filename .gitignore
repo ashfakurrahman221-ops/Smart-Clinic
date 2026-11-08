@@ -1,0 +1,95 @@
+# Clinic Backend (Django REST Framework)
+
+# Dependencies & Environments
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Media & Static
+clinic_backend/media/
+clinic_backend/staticfiles/
+media/
+staticfiles/
+
+# Logs & Debugging
+*.log
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+.neon
+node_modules/
+
+# dependencies
+node_modules/
+
+# build output
+dist/
+.next/
+build/
+out/
+/plans
+
+# env files
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editors
+.vscode/
+.idea/
+
+# lean-ctx runtime
+.lean-ctx/
+
+# temp / office lock files
+~$*
+~WRL*.tmp
+.tmp
+tmp/
+srs_dump.txt
+.taste-skill
+.neon
+
+# Root-only files & scripts (MUST NOT be ignored inside subprojects)
+/package.json
+/package-lock.json
+/neon.ts
+/update-form-services.js
+/.env.local
+/.env
+
+# Nested git repositories (preserve local .git in subprojects while keeping root clean)
+**/.git/
+**/.git/**
+# Sensitive database backup
+clinic_backend/seeded_database_backup.json
+
+# Private audit report
+clinic_backend/audit_summary.json

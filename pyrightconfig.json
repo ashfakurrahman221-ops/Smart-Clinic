@@ -1,0 +1,10 @@
+{
+  "include": [
+    "clinic_backend"
+  ],
+  "extraPaths": [
+    "clinic_backend",
+    "clinic_backend/venv/Lib/site-packages"
+  ],
+  "pythonPath": "clinic_backend/venv/Scripts/python.exe"
+}
