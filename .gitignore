@@ -88,8 +88,3 @@ srs_dump.txt
 # Nested git repositories (preserve local .git in subprojects while keeping root clean)
 **/.git/
 **/.git/**
-# Sensitive database backup
-clinic_backend/seeded_database_backup.json
-
-# Private audit report
-clinic_backend/audit_summary.json
