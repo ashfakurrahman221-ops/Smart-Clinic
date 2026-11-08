@@ -283,5 +283,5 @@ With the backend running, explore the interactive API schema:
 ---
 
 <div align="center">
-  <sub>Engineered with precision for modern healthcare infrastructure in Bangladesh. Built by <a href="https://github.com/Ishtiak-Ahmed886">Ishtiak Ahmed</a>.</sub>
+ <sub>Engineered with precision for modern healthcare infrastructure in Bangladesh. Built by <a href="https://github.com/ashfakurrahman221-ops">Ashfak Ur Rahman</a>.</sub>
 </div>
